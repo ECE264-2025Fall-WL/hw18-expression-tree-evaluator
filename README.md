@@ -1,12 +1,11 @@
-<<<<<<< HEAD
-# 🧮 Expression Tree Evaluator
+# Expression Tree Evaluator
 
-This project builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
+This assignment builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
 You will parse **postfix expressions** (Reverse Polish Notation), build an expression tree, and then use recursion to evaluate and print it.
 
 ---
 
-## 📚 Learning Goals
+## Learning Goals
 
 By completing this assignment, you will:
 
@@ -20,7 +19,7 @@ By completing this assignment, you will:
 
 ---
 
-## 🔑 Background Concepts
+## Background Concepts
 
 ### Expression Notations
 - **Infix**: operators between operands  
@@ -30,7 +29,7 @@ By completing this assignment, you will:
 - **Prefix**: operators before operands  
   Example: `* + 3 4 5`
 
-👉 Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
+Note: Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
 
 ### Expression Tree
 An **expression tree** is a binary tree where:
@@ -53,7 +52,7 @@ Example for `(3 + 4) * 5`:
 
 ---
 
-## 🧩 Part 1: Building the Expression Tree
+## Part 1: Building the Expression Tree
 
 ### Function
 ```c
@@ -81,7 +80,7 @@ Result: Root is `*`.
 
 ---
 
-## 🖨️ Part 2: Printing the Expression
+## Part 2: Printing the Expression
 
 ### Function
 ```c
@@ -103,7 +102,7 @@ Tree for `3 4 + 5 *` prints as:
 
 ---
 
-## 🧮 Part 3: Evaluating the Expression
+## Part 3: Evaluating the Expression
 
 ### Function
 ```c
@@ -128,7 +127,7 @@ Output:
 
 ---
 
-## 🧹 Part 4: Freeing Memory
+## Part 4: Freeing Memory
 
 ### Function
 ```c
@@ -145,7 +144,7 @@ Prevents memory leaks when running multiple tests.
 
 ---
 
-## 🖥️ Main Program
+## Main Program
 
 `main.c` is provided and does the following:
 
@@ -160,7 +159,7 @@ Prevents memory leaks when running multiple tests.
 
 ---
 
-## 🧪 Testing Your Program
+## Testing Your Program
 
 A Makefile is provided.
 
@@ -191,7 +190,7 @@ make memory
 
 ---
 
-## 📂 Example Files
+## Example Files
 
 ### `tests/test1.txt`
 ```
@@ -205,7 +204,7 @@ make memory
 
 ---
 
-## 📦 Submission Requirements
+## Submission Requirements
 
 Submit only:
 ```
@@ -222,7 +221,7 @@ Do **not** submit `main.c` or the Makefile — they’re provided.
 
 ---
 
-## ⚡ Key Takeaways
+## Key Takeaways
 
 - Postfix → Expression Tree is **stack-based**.  
 - Traversal order defines **notation** (infix, postfix, prefix).  
@@ -232,7 +231,7 @@ Do **not** submit `main.c` or the Makefile — they’re provided.
 
 ---
 
-## 📝 Worked Example Trace
+## Worked Example Trace
 
 Expression:  
 ```
@@ -266,7 +265,7 @@ Evaluation:
 - `12/4=3`  
 - `40-3=37`  
 
-✅ Output:
+Output:
 ```
 (5 * (6 + 2)) - (12 / 4) = 37
 ```
