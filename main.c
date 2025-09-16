@@ -1,6 +1,4 @@
-
-
-/** DO NOT MODIFY THIS FILE **/
+/// DO NOT MODIFY THIS FILE ///
 
 #include <stdlib.h>
 #include <string.h>

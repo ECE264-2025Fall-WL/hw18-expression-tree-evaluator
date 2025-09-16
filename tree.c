@@ -39,7 +39,7 @@ Node* createNode(char *data) {
 
     // step b-1: copy the token into node->data
     // hint: use strncpy with a limit of MAX_TOKEN - 1, for safer copying
-    // step b-2: ensure null termination
+    // step b-2: ensure null termination by replacing the '\n' with '\0'
 
     /* Write your code here */
     strncpy(node->data, data, MAX_TOKEN - 1);
@@ -47,7 +47,7 @@ Node* createNode(char *data) {
     
     /**************************************************************/
 
-    // step c: initialize children
+    // step c: initialize children to NULL
 
     /* Write your code here */
     node->left  = NULL;
@@ -159,7 +159,7 @@ int evaluate(Node *root) {
         rightVal = evaluate(root->right);
 
     // - return the result based on the operator
-    // hint: use switch (operator) for the cases (+, -, *, /)
+    // hint: use switch case for the operator for following cases (+, -, *, /)
         /* Write your code here */
     switch(operator){
         case '+': return leftVal + rightVal;
