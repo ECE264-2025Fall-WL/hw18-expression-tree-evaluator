@@ -1,11 +1,11 @@
-# 🧮 Expression Tree Evaluator
+# Expression Tree Evaluator
 
-This project builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
+This assignment builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
 You will parse **postfix expressions** (Reverse Polish Notation), build an expression tree, and then use recursion to evaluate and print it.
 
 ---
 
-## 📚 Learning Goals
+## Learning Goals
 
 By completing this assignment, you will:
 
@@ -13,11 +13,10 @@ By completing this assignment, you will:
 - Learn how to convert **postfix → expression tree** using a stack.
 - Use **recursion** to traverse and evaluate binary trees.
 - Practice **dynamic memory management** `malloc()`.
-- Test and debug using a **Makefile** with automated test cases.
 
 ---
 
-## 🔑 Background Concepts
+## Background Concepts
 
 ### Expression Notations
 - **Infix**: operators between operands  
@@ -27,9 +26,9 @@ By completing this assignment, you will:
 - **Prefix**: operators before operands  
   Example: `* + 3 4 5`
 
-👉 Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
-
-### What is `tokens`?
+- Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
+---
+### What are `tokens`?
 - `tokens` is an **array of strings** read from the input file.  
 - Each element is one **operand** (like `3`, `x`) or one **operator** (like `+`, `*`).  
 - Example: if the file contains:
@@ -47,33 +46,79 @@ By completing this assignment, you will:
   ```
 
 ---
+### Expression Tree
+An **expression tree** is a binary tree where:
+- **Leaves** = operands (numbers/variables).
+- **Internal nodes** = operators.
 
-## 📦 The Stack (provided in `stack.c`)
+Example for `(3 + 4) * 5`:
+
+```
+       *
+      / \
+     +   5
+    / \
+   3   4
+```
+
+### The Stack (provided in `stack.c`)
 
 The **stack** is already implemented for you. It is used to build the expression tree from postfix input.
 
-Available functions:
+#### How the stack works
+A stack is a **Last-In, First-Out (LIFO)** data structure.  
+- Imagine a stack of plates: you can only add (push) to the top, and remove (pop) from the top.  
+- Example sequence:
+  1. Push `3`
+  2. Push `4`
+  3. Pop → removes `4`
+  4. Pop → removes `3`
+
+This is exactly how we manage operands and operators when building an expression tree.
+
+### Provided functions
 ```c
-void push(Node *n);
-Node* pop(void);
-bool isEmpty(void);
+void push(Stack *s, Node *node);
+Node* pop(Stack *s);
+bool isEmpty(Stack *s);
 ```
 
-How to use:
-1. **Push operands** (numbers) directly as nodes.
+#### 1. `push(Stack *s, Node *node)`
+- Places a node on **top** of the stack.  
+- You will use this when you encounter an operand (number/variable) or a newly created operator node.
+- Example:
+  ```c
+  Node* node = createNode(5);
+  push(&stack, node);
+  ```
+
+#### 2. `Node* pop(Stack *s)`
+- Removes and returns the node from the **top** of the stack.  
+- You will use this when handling an operator: pop the right operand first, then the left operand.
+- Example:
+  ```c
+  Node* node = pop(&stack);
+  ``` 
+
+#### 3. `int isEmpty(Stack *s)`
+- Returns `1` if the stack has no elements, `0` otherwise.  
+- You can use this as a safeguard to make sure you don’t pop from an empty stack.
+
+### Usage in building the tree
+1. **Push operands** (numbers) directly as nodes.  
 2. When you see an **operator**:
    - Pop the **right operand**.
    - Pop the **left operand**.
    - Create a new operator node with these as children.
-   - Push the new node back.
+   - Push the new node back.  
 
 At the end, the stack will contain **one node**: the root of the expression tree.
 
 ---
 
-## 🧩 Your Task in `tree.c`
+## Your Task in `tree.c`
 
-Students only need to implement **two functions**:
+Students need to implement **three functions**:
 
 ### 1. `createNode()`
 ```c
@@ -87,6 +132,7 @@ Node* createNode(const char *token);
 ```c
 // write your code here
 ```
+** OR replace the following comment markers with your code **
 
 ---
 
@@ -108,18 +154,33 @@ Node* buildExpressionTree(char *tokens[], int count);
 
 ---
 
-## 🖨️ Printing, Evaluating, and Freeing the Tree
+### 3. `evaluate()`
+```c
+int evaluate(Node *root);
+```
+- Recursively evaluate the expression tree.
 
-These are already implemented:
-- `printInfix(Node *root, FILE *out);`
-- `int evaluate(Node *root);`
-- `void freeTree(Node *root);`
+#### Algorithm
+1. If the node is a **leaf** → convert its string value to an integer (use `atoi()`) and return it.  
+2. If the node is an **operator**:  
+   - Recursively evaluate the left child → `leftVal`.  
+   - Recursively evaluate the right child → `rightVal`.  
+   - Apply the operator (`+`, `-`, `*`, `/`) to combine the results.  
+   - Return the computed value.  
 
-You do **not** need to change them.
+### Example
+For `(3 + 4) * 5`:
+- Left: `3 + 4 = 7`
+- Right: `5`
+- Multiply: `7 * 5 = 35`
 
----
+Output:
+```
+35
+```
 
-## 🖥️ Main Program
+
+## Main Program
 
 `main.c` is provided and does the following:
 
@@ -134,7 +195,7 @@ You do **not** need to change them.
 
 ---
 
-## 🧪 Testing Your Program
+## Testing Your Program
 
 A Makefile is provided.
 
@@ -146,11 +207,6 @@ make
 ### Run one test
 ```bash
 make test1
-```
-Which runs:
-```bash
-./expr tests/test1.txt output1
-diff -u expected/expected1.txt output1
 ```
 
 ### Run all tests
@@ -165,7 +221,7 @@ make memory
 
 ---
 
-## 📂 Example Files
+## Example Files
 
 ### `tests/test1.txt`
 ```
@@ -174,33 +230,69 @@ make memory
 
 ### `expected/expected1.txt`
 ```
-(3 + 4) * 5 = 35
+35
 ```
 
 ---
 
-## 📦 Submission Requirements
+## Submission Requirements
 
 Submit only:
 ```
 tree.c
 ```
 
-Zip and upload:
-```bash
-zip hw18.zip tree.c
-```
-
 Do **not** submit `main.c`, `stack.c`, or the Makefile — they’re provided.
 
 ---
 
-## ⚡ Key Takeaways
+## Key Takeaways
 
 - `tokens` is the **postfix expression split into strings**.  
 - `createNode()` builds nodes for operands/operators.  
 - `buildExpressionTree()` uses the **stack** to combine nodes.  
+- `evaluate()` recursively computes the value of the expression tree.  
 - You only edit `tree.c`, under the **"write your code here"** markers.  
-- The rest of the code (stack, printing, evaluation, freeing) is already done for you.
+- The rest of the code (stack, printing, freeing) is already done for you.
 
 ---
+
+## Worked Example Trace
+
+Expression:  
+```
+5 6 2 + * 12 4 / -
+```
+
+1. Push `5`.  
+2. Push `6`.  
+3. Push `2`.  
+4. See `+` → pop `2, 6` → make `(6 + 2)` node → push.  
+5. See `*` → pop `(6 + 2), 5` → make `(5 * (6 + 2))` node → push.  
+6. Push `12`.  
+7. Push `4`.  
+8. See `/` → pop `4, 12` → make `(12 / 4)` node → push.  
+9. See `-` → pop `(12 / 4), (5 * (6 + 2))` → make `((5 * (6 + 2)) - (12 / 4))` node → push.  
+
+Final tree:  
+```
+         -
+       /   \
+      *     /
+     / \   / \
+    5  + 12   4
+      / \
+     6   2
+```
+
+Evaluation:
+- `(6 + 2) = 8`  
+- `5 * 8 = 40`  
+- `12 / 4 = 3`  
+- `40 - 3 = 37`  
+
+Output:
+```
+37
+```
+ 
