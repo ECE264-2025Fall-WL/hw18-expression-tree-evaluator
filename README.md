@@ -12,9 +12,7 @@ By completing this assignment, you will:
 - Understand **expression notations**: infix, prefix, postfix (RPN).
 - Learn how to convert **postfix → expression tree** using a stack.
 - Use **recursion** to traverse and evaluate binary trees.
-- Practice **dynamic memory management** (`malloc`, `free`).
-- Work with **file I/O** in C (`fopen`, `fclose`, `fscanf`, `fprintf`).
-- Organize code with **separate compilation** (`stack.c`, `tree.c`, `expression.h`).
+- Practice **dynamic memory management** `malloc()`.
 - Test and debug using a **Makefile** with automated test cases.
 
 ---
