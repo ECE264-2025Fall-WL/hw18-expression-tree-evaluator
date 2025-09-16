@@ -33,16 +33,19 @@ Node* createNode(char *data) {
 
     /**************************************************************/
 
-    // step b-1: copy the token into node->data
-    // hint: use strncpy with a limit of MAX_TOKEN - 1, for safer copying
-    // step b-2: ensure null termination by replacing the '\n' with '\0'
+    // step b: copy the token into node->data
+    // hint: use strncpy with a limit of MAX_TOKEN - 1, for safer copying (syntax provided in assignment description)
 
     /* Write your code below */
 
+
     
+    // ensuring null termination
+    node->data[MAX_TOKEN - 1] = '\0';
+
     /**************************************************************/
 
-    // step c: initialize children to NULL
+    // step c: initialize left and right children to NULL
 
     /* Write your code below */
 
@@ -74,8 +77,8 @@ Node* buildExpressionTree(char *tokens[], int n) {
         
         if(!isOperator(token)){
             Node *leafNode;
-            // case (a): is a number (not an operator)
-            // - create a leaf node using the createNode() function you just implmented
+            // case (a): token is a number (not an operator)
+            // - create a leaf node using the createNode() function you just implemented
             // - push the node into the stack
 
             /* Write your code below */
@@ -86,17 +89,22 @@ Node* buildExpressionTree(char *tokens[], int n) {
             Node* right;
             Node* left;
             Node* operator;
-            // case (b): is an operator
-            // 1. pop right node from the stack then pop the left node
+            // case (b): token is an operator
+            // 1. pop right node from the stack then pop the left node 
+            // Note: use the given right and left nodes
 
                 /* Write your code below */
+        
 
 
-            // 2. create a new node for the operator
+            
+            // 2. create a new node for the operator using the createNode() function 
             // - connect to it the left and right node
             // - push the operator node into the stack
-                
+            // Note: use the given operator node
+            
                 /* Write your code below */
+
 
 
 
@@ -126,18 +134,19 @@ int evaluate(Node *root) {
         exit(1);
      }
 
-    // Base case: if root is a number (not an operator)
+    // Base case: if data in root is a number (not an operator)
     // hint1: use the isOperator() function
 
     if(/* Replace this comment with your code */){
     
     // - return the number
     // hint2: convert the string to int using the atoi() function
+         
     /* Write your code below */
 
     }
     else {
-        // Recursive case: if root is an operator
+        // Recursive case: if in root is an operator (use the variables given below)
         int leftVal;
         int rightVal;
         char operator = root->data[0]; // because ex: "+" is "+\0"
@@ -151,7 +160,7 @@ int evaluate(Node *root) {
 
 
         // - return the result based on the operator
-        // hint: use switch case for the operator for following cases (+, -, *, /)
+        // hint: use switch case for the operator for the following cases (+, -, *, /)
             /* Write your code below */
 
     }
