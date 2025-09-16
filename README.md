@@ -71,15 +71,24 @@ bool isEmpty(Stack *s);
 
 #### 1. `push(Stack *s, Node *node)`
 - Places a node on **top** of the stack.  
-- You will use this when you encounter an operand (number/variable) or a newly created operator node.  
+- You will use this when you encounter an operand (number/variable) or a newly created operator node.
+- Example:
+  ```c
+  Node* node = createNode(5);
+  push(&stack, node);
+  ```
 
 #### 2. `Node* pop(Stack *s)`
 - Removes and returns the node from the **top** of the stack.  
-- You will use this when handling an operator: pop the right operand first, then the left operand.  
+- You will use this when handling an operator: pop the right operand first, then the left operand.
+- Example:
+  ```c
+  Node* node = pop(&stack);
+  ``` 
 
-#### 3. `bool isEmpty(Stack *s)`
-- Returns `true` if the stack has no elements, `false` otherwise.  
-- You can use this as a safeguard to make sure you don’t pop from an empty stack.  
+#### 3. `int isEmpty(Stack *s)`
+- Returns `1` if the stack has no elements, `0` otherwise.  
+- You can use this as a safeguard to make sure you don’t pop from an empty stack.
 
 ### Usage in building the tree
 1. **Push operands** (numbers) directly as nodes.  
