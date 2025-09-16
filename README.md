@@ -134,7 +134,7 @@ Node* createNode(const char *token);
 ```
 **OR replace the following comment marker with your code**
 ```c
-/* ٌReplace this comment with your code */
+/* Replace this comment with your code */
 ```
 ---
 
@@ -155,7 +155,7 @@ Node* buildExpressionTree(char *tokens[], int count);
 ```
 **OR replace the following comment marker with your code**
 ```c
-/* ٌReplace this comment with your code */
+/* Replace this comment with your code */
 ```
 ---
 
@@ -179,7 +179,7 @@ int evaluate(Node *root);
 ```
 **OR replace the following comment marker with your code**
 ```c
-/* ٌReplace this comment with your code */
+/* Replace this comment with your code */
 ```
 
 ### Example
