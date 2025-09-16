@@ -126,15 +126,15 @@ Node* createNode(const char *token);
 ```
 - Allocate memory for a new node.
 - Copy the `token` string into the node.
-- Initialize left and right children to `NULL`.
 
-- You will need to use the `strncpy()` function (for safer copying).
+  **Note:** You will need to use the `strncpy()` function (for safer copying).
   ```c
   char *strncpy(char *dest, const char *src, size_t n);
   ```
     - `dest` → destination buffer (where the string will be copied to).
     - `src` → source string (the string to copy).
     - `n` → maximum number of characters to copy.
+- Initialize left and right children to `NULL`.
 
 **Write your code below the comment markers:**
 ```c
