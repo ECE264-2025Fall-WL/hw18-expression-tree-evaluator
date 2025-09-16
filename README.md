@@ -172,7 +172,12 @@ Node* buildExpressionTree(char *tokens[], int count);
 int evaluate(Node *root);
 ```
 - Recursively evaluate the expression tree.
+**Note:** You will need to use the `atoi()` function (for converting a string to an integer).
+```c
+int atoi(const char *str);
+```
 
+- Initialize left and right children to `NULL`.
 #### Algorithm
 1. If the node is a **leaf** → convert its string value to an integer (use `atoi()`) and return it.  
 2. If the node is an **operator**:  
