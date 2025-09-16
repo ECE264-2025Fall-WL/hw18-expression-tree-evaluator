@@ -27,7 +27,7 @@ By completing this assignment, you will:
   Example: `* + 3 4 5`
 
 - Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
---
+---
 ### What are `tokens`?
 - `tokens` is an **array of strings** read from the input file.  
 - Each element is one **operand** (like `3`, `x`) or one **operator** (like `+`, `*`).  
