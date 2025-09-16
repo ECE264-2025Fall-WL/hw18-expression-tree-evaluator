@@ -26,7 +26,7 @@ By completing this assignment, you will:
 - **Prefix**: operators before operands  
   Example: `* + 3 4 5`
 
-- Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
+- Postfix is easy for computers because the order of evaluation is explicit — no parentheses needed.
 ---
 ### What are `tokens`?
 - `tokens` is an **array of strings** read from the input file.  
@@ -132,7 +132,7 @@ Node* createNode(const char *token);
 ```c
 /* Write your Code below */
 ```
-** OR replace the following comment marker with your code **
+**OR replace the following comment marker with your code**
 ```c
 /* ٌReplace this comment with your code */
 ```
@@ -153,7 +153,7 @@ Node* buildExpressionTree(char *tokens[], int count);
 ```c
 /* Write your Code below */
 ```
-** OR replace the following comment marker with your code **
+** OR replace the following comment marker with your code**
 ```c
 /* ٌReplace this comment with your code */
 ```
@@ -173,6 +173,15 @@ int evaluate(Node *root);
    - Apply the operator (`+`, `-`, `*`, `/`) to combine the results.  
    - Return the computed value.  
 
+**Write your code below the comment markers:**
+```c
+/* Write your Code below */
+```
+** OR replace the following comment marker with your code**
+```c
+/* ٌReplace this comment with your code */
+```
+
 ### Example
 For `(3 + 4) * 5`:
 - Left: `3 + 4 = 7`
@@ -183,7 +192,7 @@ Output:
 ```
 35
 ```
-
+---
 
 ## Main Program
 
