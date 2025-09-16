@@ -129,7 +129,7 @@ int evaluate(Node *root) {
     // Base case: if root is a number (not an operator)
     // hint1: use the isOperator() function
 
-    if(/* ٌReplace this comment with your code */){
+    if(/* Replace this comment with your code */){
     
     // - return the number
     // hint2: convert the string to int using the atoi() function
