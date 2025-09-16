@@ -1,25 +1,22 @@
-# 🧮 Expression Tree Evaluator
+# Expression Tree Evaluator
 
-This project builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
+This assignment builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
 You will parse **postfix expressions** (Reverse Polish Notation), build an expression tree, and then use recursion to evaluate and print it.
 
 ---
 
-## 📚 Learning Goals
+## Learning Goals
 
 By completing this assignment, you will:
 
 - Understand **expression notations**: infix, prefix, postfix (RPN).
 - Learn how to convert **postfix → expression tree** using a stack.
 - Use **recursion** to traverse and evaluate binary trees.
-- Practice **dynamic memory management** (`malloc`, `free`).
-- Work with **file I/O** in C (`fopen`, `fclose`, `fscanf`, `fprintf`).
-- Organize code with **separate compilation** (`stack.c`, `tree.c`, `expression.h`).
-- Test and debug using a **Makefile** with automated test cases.
+- Practice **dynamic memory management** `malloc()`.
 
 ---
 
-## 🔑 Background Concepts
+## Background Concepts
 
 ### Expression Notations
 - **Infix**: operators between operands  
@@ -29,9 +26,9 @@ By completing this assignment, you will:
 - **Prefix**: operators before operands  
   Example: `* + 3 4 5`
 
-👉 Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
+- Postfix is easy for computers because order of evaluation is explicit — no parentheses needed.
 
-### What is `tokens`?
+### What are `tokens`?
 - `tokens` is an **array of strings** read from the input file.  
 - Each element is one **operand** (like `3`, `x`) or one **operator** (like `+`, `*`).  
 - Example: if the file contains:
@@ -50,11 +47,11 @@ By completing this assignment, you will:
 
 ---
 
-## 📦 The Stack (provided in `stack.c`)
+### The Stack (provided in `stack.c`)
 
 The **stack** is already implemented for you. It is used to build the expression tree from postfix input.
 
-### 🔎 How the stack works
+#### How the stack works
 A stack is a **Last-In, First-Out (LIFO)** data structure.  
 - Imagine a stack of plates: you can only add (push) to the top, and remove (pop) from the top.  
 - Example sequence:
@@ -96,7 +93,7 @@ At the end, the stack will contain **one node**: the root of the expression tree
 
 ---
 
-## 🧩 Your Task in `tree.c`
+## Your Task in `tree.c`
 
 Students need to implement **three functions**:
 
@@ -147,41 +144,7 @@ int evaluate(Node *root);
    - Apply the operator (`+`, `-`, `*`, `/`) to combine the results.  
    - Return the computed value.  
 
-#### Pseudocode Example
-```
-function evaluate(node):
-    if node is NULL:
-        return 0
-    
-    if node is a leaf (no children):
-        return integer value of node->token
-    
-    leftVal = evaluate(node->left)
-    rightVal = evaluate(node->right)
-    
-    if node->token == "+":
-        return leftVal + rightVal
-    else if node->token == "-":
-        return leftVal - rightVal
-    else if node->token == "*":
-        return leftVal * rightVal
-    else if node->token == "/":
-        return leftVal / rightVal
-```
-
----
-
-## 🖨️ Printing and Freeing the Tree
-
-These are already implemented for you:
-- `printInfix(Node *root, FILE *out);`
-- `void freeTree(Node *root);`
-
-You do **not** need to change them.
-
----
-
-## 🖥️ Main Program
+## Main Program
 
 `main.c` is provided and does the following:
 
@@ -196,7 +159,7 @@ You do **not** need to change them.
 
 ---
 
-## 🧪 Testing Your Program
+## Testing Your Program
 
 A Makefile is provided.
 
@@ -208,11 +171,6 @@ make
 ### Run one test
 ```bash
 make test1
-```
-Which runs:
-```bash
-./expr tests/test1.txt output1
-diff -u expected/expected1.txt output1
 ```
 
 ### Run all tests
@@ -227,7 +185,7 @@ make memory
 
 ---
 
-## 📂 Example Files
+## Example Files
 
 ### `tests/test1.txt`
 ```
@@ -236,28 +194,23 @@ make memory
 
 ### `expected/expected1.txt`
 ```
-(3 + 4) * 5 = 35
+35
 ```
 
 ---
 
-## 📦 Submission Requirements
+## Submission Requirements
 
 Submit only:
 ```
 tree.c
 ```
 
-Zip and upload:
-```bash
-zip hw18.zip tree.c
-```
-
 Do **not** submit `main.c`, `stack.c`, or the Makefile — they’re provided.
 
 ---
 
-## ⚡ Key Takeaways
+## Key Takeaways
 
 - `tokens` is the **postfix expression split into strings**.  
 - `createNode()` builds nodes for operands/operators.  
