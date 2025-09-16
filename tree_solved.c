@@ -24,12 +24,16 @@ Node* createNode(char *data) {
     Node* node;
 
     // step a: allocate memory for one node
-    // if the allocation fails, print an error message end exit(1)
+    // if the allocation fails, print print an error message end exit(1)
     // hint: use fprintf to print the error message in the stderr stream
 
 
-    /* Write your code below */
-
+    /* Write your code here */
+    node = (Node*)malloc(sizeof(Node));
+    if (!node) {
+        fprintf(stderr, "Memory allocation failed for Node\n");
+        exit(1);
+    }
 
     /**************************************************************/
 
@@ -37,15 +41,17 @@ Node* createNode(char *data) {
     // hint: use strncpy with a limit of MAX_TOKEN - 1, for safer copying
     // step b-2: ensure null termination by replacing the '\n' with '\0'
 
-    /* Write your code below */
-
+    /* Write your code here */
+    strncpy(node->data, data, MAX_TOKEN - 1);
+    node->data[MAX_TOKEN - 1] = '\0';
     
     /**************************************************************/
 
     // step c: initialize children to NULL
 
-    /* Write your code below */
-
+    /* Write your code here */
+    node->left  = NULL;
+    node->right = NULL;
     
     /**************************************************************/
 
@@ -75,11 +81,11 @@ Node* buildExpressionTree(char *tokens[], int n) {
         if(!isOperator(token)){
             Node *leafNode;
             // case (a): is a number (not an operator)
-            // - create a leaf node using the createNode() function you just implmented
-            // - push the node into the stack
+            // create a leaf node and push it into the stack
 
-            /* Write your code below */
-
+            /* Write your code here */
+            leafNode = createNode(token);
+            push(&st, leafNode);
 
         }
         else {
@@ -89,17 +95,20 @@ Node* buildExpressionTree(char *tokens[], int n) {
             // case (b): is an operator
             // 1. pop right node from the stack then pop the left node
 
-                /* Write your code below */
-
+                /* Write your code here */
+                right = pop(&st);
+                left = pop(&st);
 
             // 2. create a new node for the operator
             // - connect to it the left and right node
             // - push the operator node into the stack
                 
-                /* Write your code below */
+                /* Write your code here */
+                operator = createNode(token);
+                operator->left = left;
+                operator->right = right;
 
-
-
+                push(&st, operator);
 
         }
     }
@@ -113,7 +122,7 @@ int evaluate(Node *root) {
      /*
         3) evaluate recursively:
             - Base case (number node): return number
-            - Recursive case (operator node): evaluate left and right and apply operator
+            - Recursive case (operator node): evaulate left and right and apply operator
 
             Notes:  - Division is integer division (default in C).
                     - We will assume that all division expressions 
@@ -126,39 +135,46 @@ int evaluate(Node *root) {
         exit(1);
      }
 
-    // Base case: if root is a number (not an operator)
-    // hint1: use the isOperator() function
+     // Base case: if root is a number (not an operator), return the number
+     // hint1: use the isOperator() function
+     // hint2: convert the string to int using the atoi() function
 
-    if(/* ٌReplace this comment with your code */){
+         /* Write your code here */
+         if(!isOperator(root->data)){
+            return atoi(root->data);
+         }
+
+
+    // Recursive case: if root is an operator
+    int leftVal;
+    int rightVal;
+    char operator = root->data[0]; // because ex: "+" is "+\0"
+
+    // - recursively evaluate left node
+        /* Write your code here */
+        leftVal = evaluate(root->left);
+
+    // - recursively evaluate right node
+        /* Write your code here */
+        rightVal = evaluate(root->right);
+
+    // - return the result based on the operator
+    // hint: use switch case for the operator for following cases (+, -, *, /)
+        /* Write your code here */
+    switch(operator){
+        case '+': return leftVal + rightVal;
+        case '-': return leftVal - rightVal;
+        case '*': return leftVal * rightVal;
+        case '/': return leftVal / rightVal;
+    }
     
-    // - return the number
-    // hint2: convert the string to int using the atoi() function
-    /* Write your code below */
+    
+    return -1;
 
-    }
-    else {
-        // Recursive case: if root is an operator
-        int leftVal;
-        int rightVal;
-        char operator = root->data[0]; // because ex: "+" is "+\0"
-
-        // - recursively evaluate left node
-            /* Write your code below */
-
-
-        // - recursively evaluate right node
-            /* Write your code below */
-
-
-        // - return the result based on the operator
-        // hint: use switch case for the operator for following cases (+, -, *, /)
-            /* Write your code below */
-
-    }
-
-   return -1;
 }
-
+// void printInfix(Node *root, FILE *out) {
+//      /* ... */ 
+//     }
 void freeTree(Node *root) {
     if (!root) return;
     freeTree(root->left);
