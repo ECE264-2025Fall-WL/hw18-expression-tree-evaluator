@@ -130,10 +130,12 @@ Node* createNode(const char *token);
 
 **Write your code below the comment markers:**
 ```c
-// write your code here
+/* Write your Code below */
 ```
-** OR replace the following comment markers with your code **
-
+** OR replace the following comment marker with your code **
+```c
+/* ٌReplace this comment with your code */
+```
 ---
 
 ### 2. `buildExpressionTree()`
@@ -149,9 +151,12 @@ Node* buildExpressionTree(char *tokens[], int count);
 
 **Write your code below the comment markers:**
 ```c
-// replace this comment with your code
+/* Write your Code below */
 ```
-
+** OR replace the following comment marker with your code **
+```c
+/* ٌReplace this comment with your code */
+```
 ---
 
 ### 3. `evaluate()`
