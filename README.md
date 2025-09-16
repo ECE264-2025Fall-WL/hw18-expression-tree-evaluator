@@ -46,6 +46,20 @@ By completing this assignment, you will:
   ```
 
 ---
+### Expression Tree
+An **expression tree** is a binary tree where:
+- **Leaves** = operands (numbers/variables).
+- **Internal nodes** = operators.
+
+Example for `(3 + 4) * 5`:
+
+```
+       *
+      / \
+     +   5
+    / \
+   3   4
+```
 
 ### The Stack (provided in `stack.c`)
 
@@ -153,6 +167,18 @@ int evaluate(Node *root);
    - Apply the operator (`+`, `-`, `*`, `/`) to combine the results.  
    - Return the computed value.  
 
+### Example
+For `(3 + 4) * 5`:
+- Left: `3+4=7`
+- Right: `5`
+- Multiply: `7*5=35`
+
+Output:
+```
+(3 + 4) * 5 = 35
+```
+
+
 ## Main Program
 
 `main.c` is provided and does the following:
@@ -229,3 +255,43 @@ Do **not** submit `main.c`, `stack.c`, or the Makefile — they’re provided.
 - The rest of the code (stack, printing, freeing) is already done for you.
 
 ---
+
+## Worked Example Trace
+
+Expression:  
+```
+5 6 2 + * 12 4 / -
+```
+
+1. Push `5`.  
+2. Push `6`.  
+3. Push `2`.  
+4. See `+` → pop `2, 6` → make `(6 + 2)` node → push.  
+5. See `*` → pop `(6+2), 5` → make `(5 * (6+2))` node → push.  
+6. Push `12`.  
+7. Push `4`.  
+8. See `/` → pop `4, 12` → make `(12 / 4)` node → push.  
+9. See `-` → pop `(12/4), (5*(6+2))` → make `((5*(6+2)) - (12/4))` node → push.  
+
+Final tree:  
+```
+         -
+       /   \
+      *     /
+     / \   / \
+    5  + 12  4
+      / \
+     6   2
+```
+
+Evaluation:
+- `(6+2)=8`  
+- `5*8=40`  
+- `12/4=3`  
+- `40-3=37`  
+
+Output:
+```
+(5 * (6 + 2)) - (12 / 4) = 37
+```
+
