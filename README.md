@@ -128,8 +128,7 @@ Node* createNode(const char *token);
 - Copy the `token` string into the node.
 - Initialize left and right children to `NULL`.
 
-- You will need to use the ```c strncpy()``` function here
-  - Syntax:
+- You will need to use the `strncpy()` function (for safer copying).
   ```c
   char *strncpy(char *dest, const char *src, size_t n);
   ```
