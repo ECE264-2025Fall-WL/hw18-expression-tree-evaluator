@@ -169,13 +169,13 @@ int evaluate(Node *root);
 
 ### Example
 For `(3 + 4) * 5`:
-- Left: `3+4=7`
+- Left: `3 + 4 = 7`
 - Right: `5`
-- Multiply: `7*5=35`
+- Multiply: `7 * 5 = 35`
 
 Output:
 ```
-(3 + 4) * 5 = 35
+35
 ```
 
 
@@ -267,11 +267,11 @@ Expression:
 2. Push `6`.  
 3. Push `2`.  
 4. See `+` → pop `2, 6` → make `(6 + 2)` node → push.  
-5. See `*` → pop `(6+2), 5` → make `(5 * (6+2))` node → push.  
+5. See `*` → pop `(6 + 2), 5` → make `(5 * (6 + 2))` node → push.  
 6. Push `12`.  
 7. Push `4`.  
 8. See `/` → pop `4, 12` → make `(12 / 4)` node → push.  
-9. See `-` → pop `(12/4), (5*(6+2))` → make `((5*(6+2)) - (12/4))` node → push.  
+9. See `-` → pop `(12 / 4), (5 * (6 + 2))` → make `((5 * (6 + 2)) - (12 / 4))` node → push.  
 
 Final tree:  
 ```
@@ -285,13 +285,13 @@ Final tree:
 ```
 
 Evaluation:
-- `(6+2)=8`  
-- `5*8=40`  
-- `12/4=3`  
-- `40-3=37`  
+- `(6 + 2)=8`  
+- `5 * 8 = 40`  
+- `12 / 4 = 3`  
+- `40 - 3 = 37`  
 
 Output:
 ```
-(5 * (6 + 2)) - (12 / 4) = 37
+37
 ```
 
