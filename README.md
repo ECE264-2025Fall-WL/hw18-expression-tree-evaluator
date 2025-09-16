@@ -153,7 +153,7 @@ Node* buildExpressionTree(char *tokens[], int count);
 ```c
 /* Write your Code below */
 ```
-** OR replace the following comment marker with your code**
+**OR replace the following comment marker with your code**
 ```c
 /* ٌReplace this comment with your code */
 ```
@@ -177,7 +177,7 @@ int evaluate(Node *root);
 ```c
 /* Write your Code below */
 ```
-** OR replace the following comment marker with your code**
+**OR replace the following comment marker with your code**
 ```c
 /* ٌReplace this comment with your code */
 ```
