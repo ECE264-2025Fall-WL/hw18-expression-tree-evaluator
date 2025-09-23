@@ -61,7 +61,7 @@ Example for `3 4 + 5 *`:
    3   4
 ```
 #### **You can use this tool to help you visualize the examples:** https://notation-visualizer.ajayliu.com/
-
+---
 ### The Stack (provided in `stack.c`)
 
 The **stack** is already implemented for you. It is used to build the expression tree from postfix input.
