@@ -43,8 +43,6 @@ void processExpressions(const char *infile, const char *outfile)
     }
 
     Node *root = buildExpressionTree(tokens, count);
-
-    // printInfix(root, out);
     int result = evaluate(root);
     fprintf(out,"%d", result);
 
