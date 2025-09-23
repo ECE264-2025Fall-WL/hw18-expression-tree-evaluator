@@ -51,7 +51,7 @@ An **expression tree** is a binary tree where:
 - **Leaves** = operands (numbers/variables).
 - **Internal nodes** = operators.
 
-Example for `3 4 + 5 * -> (3 + 4) * 5`:
+Example for `3 4 + 5 *`:
 
 ```
        *
