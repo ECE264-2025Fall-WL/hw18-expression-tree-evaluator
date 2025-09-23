@@ -251,12 +251,12 @@ make memory
 
 ## Example Files
 
-### `tests/test1.txt`
+### `tests/test2.txt`
 ```
 3 4 + 5 *
 ```
 
-### `expected/expected1.txt`
+### `expected/expected2.txt`
 ```
 35
 ```
