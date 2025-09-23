@@ -60,6 +60,7 @@ Example for `3 4 + 5 *`:
     / \
    3   4
 ```
+#### You can check this tool to help you visualize the examples: https://notation-visualizer.ajayliu.com/
 
 ### The Stack (provided in `stack.c`)
 
