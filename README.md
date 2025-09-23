@@ -1,7 +1,7 @@
 # Expression Tree Evaluator
 
-This assignment builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.  
-You will parse **postfix expressions** (Reverse Polish Notation), build an expression tree, and then use recursion to evaluate and print it.
+This assignment builds, prints, and evaluates arithmetic expressions using a **binary expression tree**.
+A binary expression tree evaluator is a program that constructs a binary tree from a postfix arithmetic expression and computes its result by recursively evaluating the tree, where operands are stored in the leaves and operators are stored in the internal nodes (will be explained in the below sections).
 
 ---
 
