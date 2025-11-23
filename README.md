@@ -26,7 +26,7 @@ By completing this assignment, you will:
 - **Prefix**: operators before operands  
   Example: `* + 3 4 5`
 
-- Postfix is easy for computers because the order of evaluation is explicit — no parentheses needed.
+- Postfix is easy for computers because the order of evaluation is explicit - no parentheses needed.
 ---
 ### What are `tokens`?
 - `tokens` is an **array of strings** read from the input file.  
